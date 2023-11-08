@@ -3,14 +3,23 @@ const sequelize = require('./util/database');
 const bodyParser = require('body-parser');
 const jsonParser = bodyParser.json()
 const cors = require('cors')
-const User = require('./model/user')
-const userRouter = require('./routes/user');
 const dotenv = require("dotenv");
 dotenv.config();
-const app = express();
-app.use(cors())
 
+const User = require('./model/user')
+const Chat = require('./model/chat')
+
+const userRouter = require('./routes/user');
+const chatRouter = require('./routes/chat')
+
+const app = express();
+
+app.use(cors())
 app.use(jsonParser,userRouter);
+app.use(jsonParser,chatRouter);
+
+User.hasMany(Chat);
+Chat.belongsTo(User);
 
 sequelize.sync({force:true})
 .then(()=>{
