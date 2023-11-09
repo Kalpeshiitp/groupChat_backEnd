@@ -7,21 +7,29 @@ const dotenv = require("dotenv");
 dotenv.config();
 
 const User = require('./model/user')
-const Chat = require('./model/chat')
+const Message = require('./model/message')
+const Group= require('./model/group')
+const UserGroup = require('./model/userGroup');
 
 const userRouter = require('./routes/user');
-const chatRouter = require('./routes/chat')
+const messageRouter = require('./routes/message');
 
 const app = express();
 
 app.use(cors())
 app.use(jsonParser,userRouter);
-app.use(jsonParser,chatRouter);
+app.use(jsonParser,messageRouter);
 
-User.hasMany(Chat);
-Chat.belongsTo(User);
+User.hasMany(Message);
+Message.belongsTo(User);
 
-sequelize.sync()
+User.hasMany(Group)
+Group.hasMany(User)
+
+Group.hasMany(Message);
+Message.belongsTo(Group);
+
+sequelize.sync({force:true})
 .then(()=>{
     app.listen(3000)
 })
