@@ -3,6 +3,8 @@ const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const dotenv = require("dotenv");
 dotenv.config();
+const {Op} = require('sequelize');
+const sequelize = require('sequelize')
 
 const generateAccessToken = (id, name) => {
   return jwt.sign({ userId: id, name: name }, process.env.TOKEN_KEY);
@@ -10,7 +12,7 @@ const generateAccessToken = (id, name) => {
 
 const postUser = async (req, res, next) => {
   try {
-    console.log("server data>>>", req.body);
+    // console.log("server data>>>", req.body);
     const { name, email, phoneNumber, password } = req.body;
     const isValid = (value) =>
       value !== null && value !== undefined && value !== "";
@@ -44,7 +46,7 @@ const postUser = async (req, res, next) => {
 
 const postLogin = async (req, res, next) => {
   try {
-    console.log(req.body);
+    // console.log(req.body);
     const { email, password } = req.body;
     const isValid = (value) =>
       value !== null && value !== undefined && value !== "";
@@ -75,8 +77,32 @@ const postLogin = async (req, res, next) => {
   }
 };
 
+const allUsers = async (req, res) => {
+  try {
+    const keyword = req.query.search;
+    console.log('keyword>>', keyword);
+
+    const users = await User.findAll({
+      where: {
+        // [Op.or]: [
+        //   sequelize.where(sequelize.fn('LOWER', sequelize.col('name')), 'LIKE', `%${keyword.toLowerCase()}%`),
+        //   sequelize.where(sequelize.fn('LOWER', sequelize.col('email')), 'LIKE', `%${keyword.toLowerCase()}%`),
+        // ],
+        id: { [Op.not]: req.user.id }
+      }
+    });
+    console.log('SQL Query:', users.toString());
+console.log('usersssss>>',users)
+    res.send(users);
+  } catch (error) {
+    console.error('Error fetching users:', error);
+    res.status(500).send({ message: 'Internal Server Error' });
+  }
+};
+
 module.exports = {
   generateAccessToken,
   postUser,
   postLogin,
+  allUsers
 };
