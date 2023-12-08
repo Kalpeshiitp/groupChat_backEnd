@@ -13,14 +13,14 @@ const Group = sequelize.define('group', {
     type: Sequelize.STRING,
     allowNull: false,
   },
-  createdBy: {
-    type: Sequelize.INTEGER,
-    allowNull: false,
-    references: {
-      model: User,
-      key: 'id',
-    },
-  },
+  // createdBy: {
+  //   type: Sequelize.INTEGER,
+  //   allowNull: false,
+  //   references: {
+  //     model: User,
+  //     key: 'id',
+  //   },
+  // },
 });
 
 module.exports = Group;
