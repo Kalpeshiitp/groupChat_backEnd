@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="group.css" />
+    <!-- <script src="https://cdn.socket.io/4.1.2/socket.io.min.js"></script> -->
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="./group.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <title>Group Chat</title>
+  </head>
+  <body>
+    <div id="container">
+      <div id="myChat">
+          <div id="createGroup">
+              <button id="create" onclick="createGroup()">Create Group</button>
+          </div>
+          <div id="myChatList">
+              <h2>My Chats</h2>
+              <ul id="chatGroup"></ul>
+          </div>
+      </div>
+      <div id="chatBox">
+          <p id="chatName"></p>
+          <div id="chat-box">
+              <h3 id="select-chat-msg">Select the chat to start chatting</h3>
+              <div id="sendMsg" style="display: none;">
+                <div id="message"></div>
+                  <input type="text" placeholder="Write message" id="write-message" required />
+                  <button type="submit" id="send-button">Send</button>
+              </div>
+          </div>
+      </div>
+  </div>
+  <div id="createGroupModel">
+      <input type="text" id="group-name" placeholder="Enter the group name" required />
+      <div id="selected-users" style="display: flex;"></div>
+      <input type="search" id="add-user" placeholder="Add user" oninput="handleSearch(event)" />
+      <div id="user-list"></div>
+      <button id="create-group-button" onclick="handleSubmit()">Submit</button>
+  </div>
+  </body>
+</html>
+
+
+
+

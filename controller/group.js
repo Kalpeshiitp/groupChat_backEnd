@@ -1,14 +1,14 @@
 const Group = require("../model/group");
-const User = require('../model/user')
-const UserGroup = require('../model/userGroup')
+const User = require("../model/user");
+const UserGroup = require("../model/userGroup");
 
 const postCreateGroup = async (req, res, next) => {
-  console.log("postCreateGroup req body data:", req.body);
+  // console.log("postCreateGroup req body data:", req.body);
   try {
-    const  {groupName, users} = req.body;
+    const { groupName, users } = req.body;
     const userId = req.user.id;
-    console.log("userId >>>", userId);
-    console.log('req.user.name', req.user.name)
+    // console.log("userId >>>", userId);
+    // console.log('req.user.name', req.user.name)
     if (!groupName || !userId) {
       return res
         .status(400)
@@ -27,7 +27,6 @@ const postCreateGroup = async (req, res, next) => {
 
       await UserGroup.create({ userId: dbUser.id, groupId: newGroup.groupId });
     }
-
     res
       .status(201)
       .json({ success: true, message: "New group has been created", newGroup });

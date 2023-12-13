@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css" >
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="./signup.js"></script>
+    <title>Group Chat</title>
+</head>
+<body>
+    <div>
+        <form onsubmit="postUserData(event)">
+            <label for="name">Name</label>
+            <input id="name" type="text" required>
+            <label for="email">Email</label>
+            <input id="email" type="email" required>
+            <label for="phone-number">Phone number</label>
+            <input id="phone-number" type="tel" length="10" required>
+            <label for="password">Password</label>
+            <input id="password" minlength="4" type="password">
+            <button id="signup">Signup</button>
+        </form>
+    </div>
+    <div>
+        <a href="../login/login.html">Existing User</a>
+    </div>
+</body>
+</html>

@@ -12,7 +12,6 @@ const generateAccessToken = (id, name) => {
 
 const postUser = async (req, res, next) => {
   try {
-    // console.log("server data>>>", req.body);
     const { name, email, phoneNumber, password } = req.body;
     const isValid = (value) =>
       value !== null && value !== undefined && value !== "";
@@ -76,23 +75,18 @@ const postLogin = async (req, res, next) => {
       });
   }
 };
-
 const allUsers = async (req, res) => {
   try {
     const keyword = req.query.search;
-    console.log('keyword>>', keyword);
+    // console.log('keyword>>', keyword);
 
     const users = await User.findAll({
       where: {
-        // [Op.or]: [
-        //   sequelize.where(sequelize.fn('LOWER', sequelize.col('name')), 'LIKE', `%${keyword.toLowerCase()}%`),
-        //   sequelize.where(sequelize.fn('LOWER', sequelize.col('email')), 'LIKE', `%${keyword.toLowerCase()}%`),
-        // ],
         id: { [Op.not]: req.user.id }
       }
     });
-    console.log('SQL Query:', users.toString());
-console.log('usersssss>>',users)
+    // console.log('SQL Query:', users.toString());
+// console.log('usersssss>>',users)
     res.send(users);
   } catch (error) {
     console.error('Error fetching users:', error);

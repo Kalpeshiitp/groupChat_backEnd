@@ -1,0 +1,119 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f2f2f2;
+}
+
+#container {
+  display: flex;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+#myChat {
+  flex: 1;
+  background-color: #333;
+  color: white;
+  padding: 20px;
+}
+
+#chatBox {
+  flex: 2;
+  display: flex;
+  background-color: #fff;
+  border-radius: 5px;
+  overflow: hidden;
+  margin: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+#myChatList {
+  flex: 1;
+  background-color: #333;
+  color: white;
+  padding: 20px;
+}
+
+#createGroup {
+  text-align: center;
+}
+
+#create {
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+#createGroupModel {
+  background-color: #fff;
+  padding: 20px;
+  margin: 20px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  display: none;
+}
+
+/* ... Other Styles ... */
+
+#chatGroup li:hover {
+  background-color: rgb(118, 174, 111);
+  cursor: pointer;
+}
+
+#chatBox {
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+  border-radius: 5px;
+  overflow: hidden;
+  margin: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+#sendMsg {
+  display: flex;
+  padding: 20px;
+}
+
+#sendMsg input[type="text"] {
+  flex: 1;
+  padding: 10px;
+  margin-right: 10px;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+#sendMsg button {
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+#message {
+  max-height: 300px; /* Adjust the height as per your requirement */
+  overflow-y: auto; /* Enable vertical scroll when content overflows */
+  padding: 10px; /* Add padding for better readability */
+  border: 1px solid #ccc; /* Optional: Add a border for better separation */
+}
+
+/* Style for individual messages */
+#message div {
+  margin-bottom: 10px; /* Adjust margin between messages */
+}

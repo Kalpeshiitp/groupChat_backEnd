@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="login.css" >
+    <script src="./login.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <title>Log in page</title>
+</head>
+<body>
+    <div  id="login-form">
+        <form onsubmit="login(event)">
+            <label for="email" >Email</label>
+            <input id="email" type="email" required>
+            <label for="password" >Password</label>
+            <input id="password" minlength="4" type="password">
+           <button id="signup">Login</button>
+        </form>
+    </div>
+
+
+    <div  id="signup-div">
+        <a href="../signup/signup.html">Signup--new user</a>
+    </div>
+</body>
+</html>

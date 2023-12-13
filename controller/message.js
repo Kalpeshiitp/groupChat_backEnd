@@ -4,7 +4,7 @@ const User = require('../model/user');
 
 const postMessage = async (req, res, next) => {
   try {
-    console.log('message body', req.body);
+    // console.log('message body', req.body);
     const { message, groupId } = req.body;
     const newMessage = await Message.create({ message, userId: req.user.id, groupGroupId: groupId });
     res.status(201).json({ message: 'Message is posted', success: true, message: newMessage });
@@ -21,7 +21,7 @@ const getAllMessages = async (req, res) => {
       where: { groupGroupId: groupId },
       include: [{ model: User, attributes: ['name'] }], 
     });
-    console.log('messages>>>>', messages);
+    // console.log('messages>>>>', messages);
     res.status(200).json({ success: true, messages ,loggedInUser});
   } catch (err) {
     console.error(err);
